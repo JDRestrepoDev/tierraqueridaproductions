@@ -1,7 +1,6 @@
-import { fetchGigsFromSheets, fetchGalleryFromSheets } from './sheets'
 import type { Show, GalleryItem } from './types'
 
-// Fallback data in case Google Sheets is unavailable
+// Hard-coded gigs (events) data
 const fallbackGigs: Show[] = [
   {
     id: 1,
@@ -54,69 +53,19 @@ const fallbackGallery: GalleryItem[] = [
   }
 ]
 
-// Cache for data to avoid repeated API calls
-let gigsCache: Show[] | null = null
-let galleryCache: GalleryItem[] | null = null
-let lastFetchTime = 0
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
-
-/**
- * Gets gigs data, fetching from Google Sheets if cache is stale
- */
 export async function getGigs(): Promise<Show[]> {
-  const now = Date.now()
-  
-  // Return cached data if it's still fresh
-  if (gigsCache && (now - lastFetchTime) < CACHE_DURATION) {
-    return gigsCache
-  }
-
-  try {
-    const gigs = await fetchGigsFromSheets()
-    if (gigs.length > 0) {
-      gigsCache = gigs
-      lastFetchTime = now
-      return gigs
-    }
-  } catch (error) {
-    console.warn('Failed to fetch gigs from Google Sheets, using fallback data:', error)
-  }
-
-  // Use fallback data if Google Sheets fails
+  // Directly return hard-coded gigs data
   return fallbackGigs
 }
 
-/**
- * Gets gallery data, fetching from Google Sheets if cache is stale
- */
 export async function getGallery(): Promise<GalleryItem[]> {
-  const now = Date.now()
-  
-  // Return cached data if it's still fresh
-  if (galleryCache && (now - lastFetchTime) < CACHE_DURATION) {
-    return galleryCache
-  }
-
-  try {
-    const gallery = await fetchGalleryFromSheets()
-    if (gallery.length > 0) {
-      galleryCache = gallery
-      lastFetchTime = now
-      return gallery
-    }
-  } catch (error) {
-    console.warn('Failed to fetch gallery from Google Sheets, using fallback data:', error)
-  }
-
-  // Use fallback data if Google Sheets fails
+  // Directly return hard-coded gallery data
   return fallbackGallery
 }
 
 /**
- * Clears the cache to force fresh data on next request
+ * Included for backwards compatibility; no caching is used now.
  */
 export function clearCache(): void {
-  gigsCache = null
-  galleryCache = null
-  lastFetchTime = 0
+  // no-op
 }
