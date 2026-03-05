@@ -1,5 +1,3 @@
-import SocialLinks from "./SocialLinks";
-
 interface BannerHeaderProps {
   title: string;
   date: string;
