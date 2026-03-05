@@ -1,4 +1,8 @@
 import type { Show, GalleryItem } from './types'
+import gig1 from '../assets/images/gigs/1.jpg'
+import gig2 from '../assets/images/gigs/2.jpg'
+import gig3 from '../assets/images/gigs/3.jpg'
+import gig4 from '../assets/images/gigs/4.jpg'
 
 // Hard-coded gigs (events) data
 const fallbackGigs: Show[] = [
@@ -33,22 +37,22 @@ const fallbackGallery: GalleryItem[] = [
     id: 1,
     title: "Colombian Independence Day",
     location: "Miami, FL",
-    image: "/src/assets/images/gigs/1.jpg",
+    image: gig1,
     images: [
-      "/src/assets/images/gigs/1.jpg",
-      "/src/assets/images/gigs/2.jpg",
-      "/src/assets/images/gigs/3.jpg"
+      gig1,
+      gig2,
+      gig3
     ]
   },
   {
     id: 2,
     title: "Latin Music Festival",
     location: "Orlando, FL",
-    image: "/src/assets/images/gigs/2.jpg",
+    image: gig2,
     images: [
-      "/src/assets/images/gigs/2.jpg",
-      "/src/assets/images/gigs/4.jpg",
-      "/src/assets/images/gigs/1.jpg"
+      gig2,
+      gig4,
+      gig1
     ]
   }
 ]

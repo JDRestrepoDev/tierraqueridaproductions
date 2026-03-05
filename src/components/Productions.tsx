@@ -1,3 +1,8 @@
+import gig1 from '../assets/images/gigs/1.jpg'
+import gig2 from '../assets/images/gigs/2.jpg'
+import gig3 from '../assets/images/gigs/3.jpg'
+import gig4 from '../assets/images/gigs/4.jpg'
+
 interface Production {
   id: number
   title: string
@@ -17,28 +22,28 @@ const Productions = ({ productions }: ProductionsProps) => {
       title: "Event Organization",
       description: "Full-service event planning and coordination for cultural celebrations, corporate events, and private parties.",
       icon: "🎵",
-      backgroundImage: "/src/assets/images/gigs/1.jpg"
+      backgroundImage: gig1
     },
     {
       id: 2,
       title: "Artist Management",
       description: "Professional artist booking and management services for musicians, performers, and cultural entertainers.",
       icon: "👥",
-      backgroundImage: "/src/assets/images/gigs/2.jpg"
+      backgroundImage: gig2
     },
     {
       id: 3,
       title: "Cultural Productions",
       description: "Creating and producing authentic Latin cultural experiences that celebrate heritage and tradition.",
       icon: "📅",
-      backgroundImage: "/src/assets/images/gigs/3.jpg"
+      backgroundImage: gig3
     },
     {
       id: 4,
       title: "Partnerships",
       description: "Collaborating with venues, organizations, and artists to create memorable cultural experiences.",
       icon: "🤝",
-      backgroundImage: "/src/assets/images/gigs/4.jpg"
+      backgroundImage: gig4
     }
   ]
 

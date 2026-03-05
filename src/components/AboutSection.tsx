@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import aboutBand from '../assets/images/aboutUs/whole-band.jpg'
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -50,7 +51,7 @@ const AboutSection = () => {
           <div className={`bg-gradient-to-br from-deep-red to-turquoise rounded-lg h-96 flex items-center justify-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="text-white text-center">
               {/* <div className="text-6xl mb-4">🎵</div> */}
-              <img src="/src/assets/images/aboutUs/whole-band.jpg" alt="Tierra Querida" className="w-full h-full object-cover rounded-lg" />
+              <img src={aboutBand} alt="Tierra Querida" className="w-full h-full object-cover rounded-lg" />
               {/* <p className="text-xl">Orchestra in Action</p> */}
             </div>
           </div>

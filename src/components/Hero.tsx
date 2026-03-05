@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import heroLogo from '../assets/logos/tierra-querida2.png'
+import promoVideo from '../assets/videos/promo-video-trimmed.mp4'
 
 const Hero = () => {
   return (
@@ -21,7 +23,7 @@ const Hero = () => {
           target.style.display = 'none'
         }}
       >
-        <source src="/src/assets/videos/promo-video-trimmed.mp4" type="video/mp4" />
+        <source src={promoVideo} type="video/mp4" />
         {/* Fallback for browsers that don't support video */}
         Your browser does not support the video tag.
       </video>
@@ -39,10 +41,10 @@ const Hero = () => {
         {/* <img src="/src/assets/whole-band.jpg" alt="Tierra Querida" className="w-1/2 mx-auto mb-6" /> */}
         
         <img
-  src="src/assets/logos/tierra-querida2.png"
-  alt="Tierra Querida Logo"
-  className="block mx-auto mb-2 w-2/3 max-w-[320px] pt-20 "
-/>
+          src={heroLogo}
+          alt="Tierra Querida Logo"
+          className="block mx-auto mb-2 w-2/3 max-w-[320px] pt-20 "
+        />
 
 <h2 className="-mt-1 text-2xl sm:text-3xl lg:text-4xl font-dm-serif text-gold mb-8">
   Orchestra & Productions
