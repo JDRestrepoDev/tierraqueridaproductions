@@ -8,27 +8,24 @@ import gig4 from '../assets/images/gigs/4.jpg'
 const fallbackGigs: Show[] = [
   {
     id: 1,
-    title: "Spring Latin Festival",
-    date: "March 15, 2024",
-    location: "Bayfront Park, Miami",
-    time: "7:00 PM - 10:00 PM",
-    price: "$25"
+    title: "Private Gig",
+    date: "2026-03-07", // 7 marzo
+    location: "Private event",
+    time: "",
   },
   {
     id: 2,
-    title: "Corporate Gala",
-    date: "April 22, 2024",
-    location: "Convention Center, Orlando",
-    time: "6:30 PM - 11:00 PM",
-    price: "$50"
+    title: "Oxford Street Mall, Bondi Junction",
+    date: "2026-03-21", // 21 marzo
+    location: "Bondi Junction",
+    time: "",
   },
   {
     id: 3,
-    title: "Cinco de Mayo Celebration",
-    date: "May 18, 2024",
-    location: "Downtown Tampa",
-    time: "5:00 PM - 9:00 PM",
-    price: "$20"
+    title: "Lands Down Hotel",
+    date: "2026-05-16", // 16 mayo
+    location: "Lansdowne Hotel",
+    time: "",
   }
 ]
 
