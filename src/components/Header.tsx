@@ -2,12 +2,15 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import BannerHeader from './BannerHeader'
 import SocialLinks from './SocialLinks'
+import { getPrimaryFeaturedEvent } from '../data/featuredEvents'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
 
   const isActive = (path: string) => location.pathname === path
+
+  const featuredEvent = getPrimaryFeaturedEvent()
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -18,16 +21,18 @@ const Header = () => {
   ]
 
   return (
-    <header className="bg-black/95 backdrop-blur-sm fixed w-full top-0 z-50">
-      <BannerHeader
-        title="Tierra Querida – Live in Sydney"
-        date="Oct 12, 2025"
-        ticketUrl="https://tickets.example.com"
-      />
+    <header className="bg-black/80 backdrop-blur-md fixed w-full top-0 z-50 border-b border-white/5 transition-all duration-300">
+      {featuredEvent && (
+        <BannerHeader
+          title={featuredEvent.bannerTitle}
+          date={featuredEvent.bannerDate}
+          ticketUrl={featuredEvent.pagePath}
+        />
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-cinzel font-bold text-gold">
+          <Link to="/" className="text-xl font-outfit font-semibold text-gold tracking-tight hover:text-yellow-300 transition-colors">
             Tierra Querida
           </Link>
           
@@ -47,10 +52,10 @@ const Header = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-2 py-2 text-sm font-medium transition-colors duration-200 ${
+                  className={`px-3 py-2 text-sm font-medium tracking-wide transition-all duration-200 ${
                     isActive(item.path)
-                      ? 'text-gold border-b-2 border-gold'
-                      : 'text-white hover:text-gold'
+                      ? 'text-gold'
+                      : 'text-white/80 hover:text-gold'
                   }`}
                 >
                   {item.label}

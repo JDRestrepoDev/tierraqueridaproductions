@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import gig1 from '../assets/images/gigs/1.jpg'
 import gig2 from '../assets/images/gigs/2.jpg'
 import gig3 from '../assets/images/gigs/3.jpg'
@@ -16,76 +17,90 @@ interface ProductionsProps {
 }
 
 const Productions = ({ productions }: ProductionsProps) => {
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
+  const gridRef = useRef<HTMLDivElement>(null)
+
   const defaultProductions: Production[] = [
     {
       id: 1,
-      title: "Event Organization",
-      description: "Full-service event planning and coordination for cultural celebrations, corporate events, and private parties.",
-      icon: "🎵",
-      backgroundImage: gig1
+      title: 'Event Organization',
+      description: 'Full-service event planning and coordination for cultural celebrations, corporate events, and private parties.',
+      icon: '🎵',
+      backgroundImage: gig1,
     },
     {
       id: 2,
-      title: "Artist Management",
-      description: "Professional artist booking and management services for musicians, performers, and cultural entertainers.",
-      icon: "👥",
-      backgroundImage: gig2
+      title: 'Artist Management',
+      description: 'Professional artist booking and management services for musicians, performers, and cultural entertainers.',
+      icon: '👥',
+      backgroundImage: gig2,
     },
     {
       id: 3,
-      title: "Cultural Productions",
-      description: "Creating and producing authentic Latin cultural experiences that celebrate heritage and tradition.",
-      icon: "📅",
-      backgroundImage: gig3
+      title: 'Cultural Productions',
+      description: 'Creating and producing authentic Latin cultural experiences that celebrate heritage and tradition.',
+      icon: '📅',
+      backgroundImage: gig3,
     },
     {
       id: 4,
-      title: "Partnerships",
-      description: "Collaborating with venues, organizations, and artists to create memorable cultural experiences.",
-      icon: "🤝",
-      backgroundImage: gig4
-    }
+      title: 'Partnerships',
+      description: 'Collaborating with venues, organizations, and artists to create memorable cultural experiences.',
+      icon: '🤝',
+      backgroundImage: gig4,
+    },
   ]
 
   const displayProductions = productions || defaultProductions
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = parseInt(entry.target.getAttribute('data-production-id') || '0')
+            setVisibleCards((prev) => new Set([...prev, id]))
+          }
+        })
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    )
+
+    const cards = gridRef.current?.querySelectorAll('[data-production-id]')
+    cards?.forEach((card) => observer.observe(card))
+    return () => cards?.forEach((card) => observer.unobserve(card))
+  }, [displayProductions])
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {displayProductions.map((production) => (
-        <div 
-          key={production.id} 
-          className="relative rounded-lg overflow-hidden h-80 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:brightness-110 cursor-pointer opacity-0 animate-fade-in"
-          style={{ animationDelay: `${production.id * 100}ms` }}
+    <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {displayProductions.map((production, index) => (
+        <div
+          key={production.id}
+          data-production-id={production.id}
+          className={`relative rounded-2xl overflow-hidden h-80 cursor-pointer group reveal ${
+            visibleCards.has(production.id) ? 'revealed' : ''
+          }`}
+          style={{ transitionDelay: `${index * 100}ms` }}
         >
-          {/* Background Image with Blur */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${production.backgroundImage})`,
-              filter: 'blur(3px)',
-              transform: 'scale(1.05)'
-            }}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
+            style={{ backgroundImage: `url(${production.backgroundImage})` }}
           />
-          
-          {/* Dark Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
-          
-          {/* Additional Gradient Overlay for Better Text Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-          
-          {/* Content */}
-          <div className="relative z-10 h-full flex flex-col justify-center items-center text-center p-6">
-            <div className="text-4xl mb-4 drop-shadow-2xl filter brightness-110">{production.icon}</div>
-            <h3 className="text-xl font-bold text-white mb-4 drop-shadow-2xl filter brightness-110">
+
+          <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+          <div className="relative z-10 h-full flex flex-col justify-end p-6 text-left">
+            <span className="text-3xl mb-3">{production.icon}</span>
+            <h3 className="text-lg font-outfit font-semibold text-white mb-2">
               {production.title}
             </h3>
-            <p className="text-white leading-relaxed drop-shadow-2xl filter brightness-110 font-medium">
+            <p className="text-white/75 text-sm font-body leading-relaxed line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
               {production.description}
             </p>
           </div>
-          
-          {/* Subtle Border */}
-          <div className="absolute inset-0 border-2 border-white border-opacity-20 rounded-lg" />
+
+          <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
         </div>
       ))}
     </div>

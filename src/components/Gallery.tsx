@@ -111,19 +111,17 @@ const Gallery = ({ items, showAll = false }: GalleryProps) => {
           <div 
             key={item.id} 
             data-item-id={item.id}
-            className={`bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-1000 cursor-pointer h-80 flex flex-col ${
-              visibleItems.has(item.id) 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
+            className={`group card-modern cursor-pointer h-80 flex flex-col reveal ${
+              visibleItems.has(item.id) ? 'revealed' : ''
             }`}
-            style={{ transitionDelay: `${index * 100}ms` }}
+            style={{ transitionDelay: `${index * 80}ms` }}
             onClick={() => openModal(item)}
           >
-            <div className="aspect-w-4 aspect-h-3 bg-gradient-to-br from-gold to-turquoise flex items-center justify-center relative overflow-hidden h-64">
+            <div className="relative overflow-hidden h-64 bg-gray-100">
               <img 
                 src={item.image} 
                 alt={item.title}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   // Fallback to placeholder if image fails to load
                   const target = e.target as HTMLImageElement
@@ -149,9 +147,9 @@ const Gallery = ({ items, showAll = false }: GalleryProps) => {
                 </div>
               </div>
             </div>
-            <div className="p-4 flex-1 flex flex-col justify-center">
-              <h3 className="text-lg font-semibold text-deep-red mb-2">{item.title}</h3>
-              <p className="text-gray-600">{item.location}</p>
+            <div className="p-5 flex-1 flex flex-col justify-center">
+              <h3 className="text-base font-outfit font-semibold text-deep-red mb-1">{item.title}</h3>
+              <p className="text-gray-500 text-sm font-body">{item.location}</p>
             </div>
           </div>
         ))}

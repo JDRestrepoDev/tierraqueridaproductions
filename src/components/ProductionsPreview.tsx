@@ -1,20 +1,19 @@
 import { Link } from 'react-router-dom'
+import SectionHeading from './SectionHeading'
 import Productions from './Productions'
 
 const ProductionsPreview = () => {
   return (
-    <section className="py-20" style={{ backgroundColor: '#FFFFFF' }}>
+    <section className="section-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-playfair font-bold text-deep-red mb-4">Productions & Services</h2>
-          <p className="text-lg text-gray-600">Comprehensive event and artist management services</p>
-        </div>
+        <SectionHeading
+          eyebrow="What we offer"
+          title="Productions & Services"
+          subtitle="Comprehensive event and artist management services"
+        />
         <Productions />
-        <div className="text-center mt-12">
-          <Link
-            to="/productions"
-            className="inline-block bg-deep-red text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-800 transition-colors"
-          >
+        <div className="text-center mt-14">
+          <Link to="/productions" className="btn-dark">
             Learn More
           </Link>
         </div>

@@ -9,23 +9,24 @@ const ContactPage = () => {
 
   return (
     <div className="pt-16">
-      <section className="py-20">
+      <section className="section-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl font-playfair font-bold text-deep-red mb-4">Contact Us</h1>
-            <p className="text-xl text-gray-600">Ready to book the orchestra or collaborate on your next event?</p>
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-turquoise mb-3">Get in touch</p>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-semibold text-deep-red tracking-tight mb-4">Contact Us</h1>
+            <p className="text-lg text-gray-500 font-body">Ready to book the orchestra or collaborate on your next event?</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-semibold text-deep-red mb-6">Send us a message</h2>
+              <h2 className="text-xl font-outfit font-semibold text-deep-red mb-6">Send us a message</h2>
               <ContactForm />
             </div>
             
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl font-semibold text-deep-red mb-6">Get in touch</h2>
+              <h2 className="text-xl font-outfit font-semibold text-deep-red mb-6">Get in touch</h2>
               <div className="space-y-6">
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-deep-red rounded-full flex items-center justify-center mr-4">

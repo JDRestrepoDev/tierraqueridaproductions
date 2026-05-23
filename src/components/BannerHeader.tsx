@@ -1,10 +1,17 @@
+import { Link } from 'react-router-dom'
+
 interface BannerHeaderProps {
   title: string;
   date: string;
   ticketUrl: string;
 }
 
+const ticketLinkClass =
+  'rounded bg-gold px-3 py-1 text-xs font-medium text-black hover:bg-yellow-400 whitespace-nowrap'
+
 export default function BannerHeader({ title, date, ticketUrl }: BannerHeaderProps) {
+  const isInternal = ticketUrl.startsWith('/')
+
   return (
     <div className="hidden md:grid grid-cols-3 items-center w-full h-10 bg-gray-800 text-white px-4 text-sm">
       {/* left spacer */}
@@ -15,14 +22,20 @@ export default function BannerHeader({ title, date, ticketUrl }: BannerHeaderPro
         <span className="truncate">
           🎶 <strong>{title}</strong> – {date}
         </span>
-        <a
-          href={ticketUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded bg-gold px-3 py-1 text-xs font-medium text-black hover:bg-yellow-400 whitespace-nowrap"
-        >
-          Get Tickets
-        </a>
+        {isInternal ? (
+          <Link to={ticketUrl} className={ticketLinkClass}>
+            Get Tickets
+          </Link>
+        ) : (
+          <a
+            href={ticketUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={ticketLinkClass}
+          >
+            Get Tickets
+          </a>
+        )}
       </div>
 
       {/* right-aligned social icons (banner-only small size) */}

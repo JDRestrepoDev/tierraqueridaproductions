@@ -5,6 +5,7 @@ import Gallery from './pages/Gallery'
 import Shows from './pages/Shows'
 import Productions from './pages/Productions'
 import Contact from './pages/Contact'
+import CumbiaFest from './pages/CumbiaFest'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="shows" element={<Shows />} />
         <Route path="productions" element={<Productions />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="cumbiafest-2026" element={<CumbiaFest />} />
       </Route>
     </Routes>
   )

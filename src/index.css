@@ -1,47 +1,242 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Marcellus&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100;200;300;400;500;600;700;800;900;1,100;200;300;400;500;600;700;800;900&family=Source+Sans+3:ital,wght@0,200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat+Brush&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-inter;
+  html {
+    scroll-behavior: smooth;
   }
-  
+
+  body {
+    @apply font-body text-gray-800 antialiased;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-cinzel;
+    @apply font-outfit;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-gold text-black px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg hover:shadow-gold/25 hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-gold/80 text-gold px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide backdrop-blur-sm transition-all duration-300 hover:bg-gold hover:text-black hover:-translate-y-0.5;
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 bg-deep-red text-white px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-red-900 hover:shadow-lg hover:shadow-deep-red/20 hover:-translate-y-0.5;
+  }
+
+  .section-cream {
+    @apply py-24 lg:py-28 bg-cream;
+  }
+
+  .section-white {
+    @apply py-24 lg:py-28 bg-white;
+  }
+
+  .card-modern {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-deep-red/5 hover:-translate-y-1;
   }
 }
 
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 1.5s ease-out forwards;
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  
-  .animate-fade-in-left {
-    animation: fadeInLeft 1.5s ease-out forwards;
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @keyframes fadeIn {
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-scale.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+
+  .animate-hero-fade {
+    animation: heroFade 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-hero-slide-up {
+    animation: heroSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes heroFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes heroSlideUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(32px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
-  @keyframes fadeInLeft {
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  .animate-fest-float {
+    animation: festFloat 4s ease-in-out infinite;
+  }
+
+  .animate-fest-float-delayed {
+    animation: festFloat 4s ease-in-out 1.5s infinite;
+  }
+
+  .animate-fest-pulse {
+    animation: festPulse 2.5s ease-in-out infinite;
+  }
+
+  .animate-fest-slide-left {
+    animation: festSlideLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-fest-slide-right {
+    animation: festSlideRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-fest-pop {
+    animation: festPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes festFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+
+  @keyframes festPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  @keyframes festSlideLeft {
     from {
       opacity: 0;
-      transform: translateX(-30px);
+      transform: translateX(-48px) rotate(-2deg);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateX(0) rotate(0deg);
     }
+  }
+
+  @keyframes festSlideRight {
+    from {
+      opacity: 0;
+      transform: translateX(48px) rotate(2deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+  }
+
+  @keyframes festPop {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .cumbiafest-page {
+    @apply font-fest-hand text-gray-800;
+  }
+
+  .cumbiafest-page h1,
+  .cumbiafest-page h2,
+  .cumbiafest-page h3 {
+    @apply font-fest-display;
+  }
+
+  .fest-title-shadow {
+    text-shadow:
+      2px 2px 0 rgba(30, 77, 140, 0.8),
+      4px 4px 0 rgba(245, 208, 32, 0.5),
+      -1px -1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .fest-retro-text {
+    text-shadow:
+      3px 3px 0 #F5D020,
+      -1px -1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .fest-bg-texture {
+    background-color: #A8D5CE;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 4px
+      ),
+      radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(30, 77, 140, 0.08) 0%, transparent 40%);
   }
 }

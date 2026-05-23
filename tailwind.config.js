@@ -8,26 +8,26 @@ export default {
     extend: {
       colors: {
         'deep-red': '#8B0000',
-        'gold': '#FFD700',
-        'turquoise': '#40E0D0',
+        'gold': '#E8B923',
+        'turquoise': '#2DD4BF',
+        'cream': '#FAF8F5',
+        'fest-teal': '#A8D5CE',
+        'fest-teal-dark': '#6BA89E',
+        'fest-yellow': '#F5D020',
+        'fest-blue': '#1E4D8C',
       },
       fontFamily: {
-        // Primary heading fonts
-        'cinzel': ['Cinzel', 'serif'],
-        'dm-serif': ['DM Serif Display', 'serif'],
-        'cormorant': ['Cormorant Garamond', 'serif'],
-        'marcellus': ['Marcellus', 'serif'],
-        'bodoni': ['Bodoni Moda', 'serif'],
-        
-        // Body fonts
-        'inter': ['Inter', 'sans-serif'],
-        'work-sans': ['Work Sans', 'sans-serif'],
-        'source-sans': ['Source Sans 3', 'sans-serif'],
-        'manrope': ['Manrope', 'sans-serif'],
-        
+        'outfit': ['Outfit', 'sans-serif'],
+        'body': ['Plus Jakarta Sans', 'sans-serif'],
+        'fest-script': ['Pacifico', 'cursive'],
+        'fest-elegant': ['Great Vibes', 'cursive'],
+        'fest-display': ['Bebas Neue', 'sans-serif'],
+        'fest-hand': ['Caveat Brush', 'cursive'],
         // Legacy support
+        'cinzel': ['Cinzel', 'serif'],
+        'inter': ['Inter', 'sans-serif'],
         'playfair': ['Playfair Display', 'serif'],
-        'sans': ['Inter', 'sans-serif'],
+        'sans': ['Plus Jakarta Sans', 'sans-serif'],
       },
     },
   },
