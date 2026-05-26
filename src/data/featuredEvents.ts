@@ -3,6 +3,7 @@ import cumbiafestFlyer from '../assets/images/events/cumbiafest-flyer.png'
 export interface EventDate {
   city: string
   date: string
+  ticketUrl: string
 }
 
 export interface TicketTier {
@@ -34,6 +35,9 @@ export interface FeaturedEvent {
 
 export const HUMANITIX_AFROSOUND_URL =
   'https://events.humanitix.com/afrosound/tickets?utm_source=ig&utm_medium=social&utm_content=link_in_bio'
+
+export const OZTIX_AFROSOUND_MELBOURNE_URL =
+  'https://tickets.oztix.com.au/outlet/event/9038611d-a269-4892-9e9a-1275ca78690b'
 
 export const CUMBIAFEST_PAGE_PATH = '/cumbiafest-2026'
 
@@ -79,8 +83,8 @@ export const featuredEvents: FeaturedEvent[] = [
     homeTagline: 'Cupos limitados — no te quedes afuera',
     startingPrice: 65,
     dates: [
-      { city: 'Sydney', date: '5 Sept 2026' },
-      { city: 'Melbourne', date: '6 Sept 2026' },
+      { city: 'Sydney', date: '5 Sept 2026', ticketUrl: HUMANITIX_AFROSOUND_URL },
+      { city: 'Melbourne', date: '4 Sept 2026', ticketUrl: OZTIX_AFROSOUND_MELBOURNE_URL },
     ],
     ticketTiers: cumbiafestTicketTiers,
   },

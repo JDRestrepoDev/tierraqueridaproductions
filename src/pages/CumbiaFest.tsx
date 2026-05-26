@@ -59,13 +59,19 @@ function TourDateCard({
   dateInfo: EventDate
   index: number
 }) {
-  const { ref, isVisible } = useScrollReveal<HTMLDivElement>()
+  const { ref, isVisible } = useScrollReveal<HTMLAnchorElement>()
   const style = tourCardStyles[index % tourCardStyles.length]
 
   return (
-    <div
+    <a
       ref={ref}
-      className={`relative ${style.rotate} ${isVisible ? style.slide : 'opacity-0'}`}
+      href={dateInfo.ticketUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Comprar tickets para ${dateInfo.city}`}
+      className={`relative block no-underline ${style.rotate} ${
+        isVisible ? style.slide : 'opacity-0'
+      }`}
       style={{ animationDelay: `${index * 0.15}s` }}
     >
       <div
@@ -81,7 +87,7 @@ function TourDateCard({
           </p>
         </div>
       </div>
-    </div>
+    </a>
   )
 }
 
@@ -164,8 +170,6 @@ const CumbiaFestPage = () => {
   }, [])
 
   if (!event) return <Navigate to="/" replace />
-
-  const ticketUrl = event.externalTicketUrl
 
   return (
     <div className="cumbiafest-page pt-16">
@@ -274,6 +278,22 @@ const CumbiaFestPage = () => {
         </div>
       </section>
 
+      {/* Promo video */}
+      <section className="py-20 lg:py-28 bg-white relative">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="aspect-video w-full rounded-2xl overflow-hidden border-4 border-black/10 shadow-xl bg-black">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/ElE8qSFWIxY"
+              title="CumbiaFest — Afrosound"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Highlights */}
       <section className="py-20 lg:py-28 bg-white relative">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -329,14 +349,22 @@ const CumbiaFestPage = () => {
               </p>
             </div>
 
-            <div>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
-                href={ticketUrl}
+                href={event.dates[0].ticketUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-fest-yellow text-fest-blue px-10 py-4 rounded-full font-fest-display text-lg tracking-widest uppercase transition-all duration-300 hover:bg-yellow-300 hover:shadow-xl hover:shadow-fest-yellow/30 hover:-translate-y-1 hover:scale-105"
               >
-                Comprar entradas
+                Tickets Sydney
+              </a>
+              <a
+                href={event.dates[1].ticketUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-fest-yellow text-fest-blue px-10 py-4 rounded-full font-fest-display text-lg tracking-widest uppercase transition-all duration-300 hover:bg-yellow-300 hover:shadow-xl hover:shadow-fest-yellow/30 hover:-translate-y-1 hover:scale-105"
+              >
+                Tickets Melbourne
               </a>
             </div>
           </div>
@@ -353,14 +381,23 @@ const CumbiaFestPage = () => {
             Elige tu entrada
           </h2>
           <p className="text-center text-gray-500 text-lg mb-10">
-            Las entradas se liberan por etapas. Compra en{' '}
+            Las entradas se liberan por etapas. Compra para{' '}
             <a
-              href={ticketUrl}
+              href={event.dates[0].ticketUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-fest-blue hover:underline font-fest-display tracking-wide"
             >
-              Humanitix
+              Sydney
+            </a>{' '}
+            o{' '}
+            <a
+              href={event.dates[1].ticketUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-fest-blue hover:underline font-fest-display tracking-wide"
+            >
+              Melbourne
             </a>
             .
           </p>
@@ -371,14 +408,22 @@ const CumbiaFestPage = () => {
             ))}
           </div>
 
-          <div className="mt-10 text-center">
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
             <a
-              href={ticketUrl}
+              href={event.dates[0].ticketUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-deep-red text-white px-10 py-4 rounded-full font-fest-display text-base tracking-widest uppercase transition-all duration-300 hover:bg-red-900 hover:shadow-lg hover:-translate-y-0.5"
             >
-              Ir a la boletería →
+              Tickets Sydney →
+            </a>
+            <a
+              href={event.dates[1].ticketUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-deep-red text-white px-10 py-4 rounded-full font-fest-display text-base tracking-widest uppercase transition-all duration-300 hover:bg-red-900 hover:shadow-lg hover:-translate-y-0.5"
+            >
+              Tickets Melbourne →
             </a>
           </div>
         </div>

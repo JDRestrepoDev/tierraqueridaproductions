@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import BannerHeader from './BannerHeader'
+import BrandLogo from './BrandLogo'
 import SocialLinks from './SocialLinks'
 import { getPrimaryFeaturedEvent } from '../data/featuredEvents'
 
@@ -18,6 +19,7 @@ const Header = () => {
     { path: '/shows', label: 'Shows' },
     { path: '/productions', label: 'Productions' },
     { path: '/contact', label: 'Contact' },
+    { path: '/cumbiafest-2026', label: 'CumbiaFest' },
   ]
 
   return (
@@ -31,10 +33,7 @@ const Header = () => {
       )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="text-xl font-outfit font-semibold text-gold tracking-tight hover:text-yellow-300 transition-colors">
-            Tierra Querida
-          </Link>
+          <BrandLogo />
           
           {/* Desktop: right-aligned social icons then menu */}
           <div className="hidden md:flex items-center gap-4 ml-auto">

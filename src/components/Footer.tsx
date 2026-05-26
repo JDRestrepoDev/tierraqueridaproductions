@@ -53,8 +53,8 @@ const Footer = () => {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-gold mb-4">Contact</h4>
             <div className="space-y-2 text-gray-400 font-body text-sm">
               <p>info@tierraquerida.com</p>
-              <p>(305) 555-0123</p>
-              <p>Miami, Florida</p>
+              <p>+61 452 516 374</p>
+              <p>Sydney, Australia</p>
             </div>
           </div>
         </div>

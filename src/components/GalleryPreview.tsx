@@ -1,24 +1,25 @@
 import { Link } from 'react-router-dom'
 import SectionHeading from './SectionHeading'
+import HomeFestSection from './HomeFestSection'
 import Gallery from './Gallery'
 
 const GalleryPreview = () => {
   return (
-    <section className="section-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Our work"
-          title="Past Gigs & Events"
-          subtitle="See our recent performances and celebrations"
-        />
-        <Gallery showAll={false} />
-        <div className="text-center mt-14">
-          <Link to="/gallery" className="btn-dark">
-            View Full Gallery
-          </Link>
-        </div>
+    <HomeFestSection theme="red" showStringLights>
+      <SectionHeading
+        festTheme="red"
+        eyebrow="Our work"
+        title="Past Gigs & Events"
+        subtitle="See our recent performances and celebrations"
+      />
+      <Gallery showAll={false} />
+      <div className="text-center mt-14">
+        <Link to="/gallery" className="home-fest-btn-primary">
+          View Full Gallery
+          <span aria-hidden>→</span>
+        </Link>
       </div>
-    </section>
+    </HomeFestSection>
   )
 }
 

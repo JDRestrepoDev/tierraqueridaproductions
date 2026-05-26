@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import heroLogo from '../assets/logos/tierra-querida2.png'
+import heroLogo from '../assets/logos/tierra-querida-hero-transparent.png'
 import promoVideo from '../assets/videos/promo-video-trimmed.mp4'
 
 const Hero = () => {
