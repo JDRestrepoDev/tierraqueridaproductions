@@ -23,6 +23,7 @@ export default {
         'fest-elegant': ['Great Vibes', 'cursive'],
         'fest-display': ['Bebas Neue', 'sans-serif'],
         'fest-hand': ['Caveat Brush', 'cursive'],
+        'brand': ['Luckiest Guy', 'cursive'],
         // Legacy support
         'cinzel': ['Cinzel', 'serif'],
         'inter': ['Inter', 'sans-serif'],

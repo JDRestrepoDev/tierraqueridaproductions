@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import ContactForm from '../components/ContactForm'
+import SectionHeading from '../components/SectionHeading'
 
 const ContactPage = () => {
   useEffect(() => {
@@ -11,11 +12,13 @@ const ContactPage = () => {
     <div className="pt-16">
       <section className="section-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-turquoise mb-3">Get in touch</p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-semibold text-deep-red tracking-tight mb-4">Contact Us</h1>
-            <p className="text-lg text-gray-500 font-body">Ready to book the orchestra or collaborate on your next event?</p>
-          </div>
+          <SectionHeading
+            eyebrow="Get in touch"
+            title="Contact Us"
+            subtitle="Ready to book the orchestra or collaborate on your next event?"
+            festTheme="white"
+            headingTag="h1"
+          />
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -48,7 +51,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Phone</p>
-                    <p className="text-gray-600">(305) 555-0123</p>
+                    <p className="text-gray-600">(+61) 452 516 374</p>
                   </div>
                 </div>
                 
@@ -61,7 +64,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Location</p>
-                    <p className="text-gray-600">Miami, Florida</p>
+                    <p className="text-gray-600">Sydney, Australia</p>
                   </div>
                 </div>
               </div>
