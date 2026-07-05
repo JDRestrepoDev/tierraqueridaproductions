@@ -39,6 +39,9 @@ export const HUMANITIX_AFROSOUND_URL =
 export const OZTIX_AFROSOUND_MELBOURNE_URL =
   'https://tickets.oztix.com.au/outlet/event/9038611d-a269-4892-9e9a-1275ca78690b'
 
+export const HUMANITIX_AFROSOUND_BRISBANE_URL =
+  'https://events.humanitix.com/afrosound-brisbane/tickets'
+
 export const CUMBIAFEST_PAGE_PATH = '/cumbiafest-2026'
 
 const cumbiafestTicketTiers: TicketTier[] = [
@@ -85,6 +88,7 @@ export const featuredEvents: FeaturedEvent[] = [
     dates: [
       { city: 'Sydney', date: '5 Sept 2026', ticketUrl: HUMANITIX_AFROSOUND_URL },
       { city: 'Melbourne', date: '4 Sept 2026', ticketUrl: OZTIX_AFROSOUND_MELBOURNE_URL },
+      { city: 'Brisbane', date: '6 Sept 2026', ticketUrl: HUMANITIX_AFROSOUND_BRISBANE_URL },
     ],
     ticketTiers: cumbiafestTicketTiers,
   },

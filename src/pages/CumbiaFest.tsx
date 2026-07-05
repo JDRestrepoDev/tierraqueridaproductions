@@ -32,6 +32,13 @@ const tourCardStyles = [
     rotate: 'rotate-1',
     slide: 'animate-fest-slide-right',
   },
+  {
+    customBg: '#DB3A26',
+    text: 'text-white',
+    accent: 'text-fest-yellow',
+    rotate: 'rotate-1',
+    slide: 'animate-fest-slide-right',
+  },
 ]
 
 function HighlightItem({ icon, text }: { icon: string; text: string }) {
@@ -75,7 +82,8 @@ function TourDateCard({
       style={{ animationDelay: `${index * 0.15}s` }}
     >
       <div
-        className={`${style.bg} ${style.text} p-8 sm:p-10 rounded-2xl shadow-xl border-4 border-black/10 transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-1`}
+        className={`${style.bg ?? ''} ${style.text} p-8 sm:p-10 rounded-2xl shadow-xl border-4 border-black/10 transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-1`}
+        style={'customBg' in style ? { backgroundColor: style.customBg } : undefined}
       >
         <p className={`font-fest-display text-5xl sm:text-6xl tracking-wider mb-2 ${style.accent}`}>
           {dateInfo.city}
@@ -366,6 +374,14 @@ const CumbiaFestPage = () => {
               >
                 Tickets Melbourne
               </a>
+              <a
+                href={event.dates[2].ticketUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-fest-yellow text-fest-blue px-10 py-4 rounded-full font-fest-display text-lg tracking-widest uppercase transition-all duration-300 hover:bg-yellow-300 hover:shadow-xl hover:shadow-fest-yellow/30 hover:-translate-y-1 hover:scale-105"
+              >
+                Tickets Brisbane
+              </a>
             </div>
           </div>
         </div>
@@ -398,6 +414,15 @@ const CumbiaFestPage = () => {
               className="text-fest-blue hover:underline font-fest-display tracking-wide"
             >
               Melbourne
+            </a>{' '}
+            o{' '}
+            <a
+              href={event.dates[2].ticketUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-fest-blue hover:underline font-fest-display tracking-wide"
+            >
+              Brisbane
             </a>
             .
           </p>
@@ -424,6 +449,14 @@ const CumbiaFestPage = () => {
               className="inline-flex items-center justify-center gap-2 bg-deep-red text-white px-10 py-4 rounded-full font-fest-display text-base tracking-widest uppercase transition-all duration-300 hover:bg-red-900 hover:shadow-lg hover:-translate-y-0.5"
             >
               Tickets Melbourne →
+            </a>
+            <a
+              href={event.dates[2].ticketUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-deep-red text-white px-10 py-4 rounded-full font-fest-display text-base tracking-widest uppercase transition-all duration-300 hover:bg-red-900 hover:shadow-lg hover:-translate-y-0.5"
+            >
+              Tickets Brisbane →
             </a>
           </div>
         </div>
