@@ -1,12 +1,18 @@
 import type { Show, GalleryItem } from './types'
-import { CUMBIAFEST_PAGE_PATH } from './featuredEvents'
+import {
+  CUMBIAFEST_PAGE_PATH,
+  DESDE_SEPTIEMBRE_2025_PAGE_PATH,
+} from './featuredEvents'
 import {
   cumbiafestCityGalleries,
   cumbiafestCover,
 } from './cumbiafestPhotos'
+import {
+  desdeSeptiembre2025Cover,
+  desdeSeptiembre2025Photos,
+} from './desdeSeptiembre2025Photos'
 import gig1 from '../assets/images/gigs/1.jpg'
 import gig2 from '../assets/images/gigs/2.jpg'
-import gig3 from '../assets/images/gigs/3.jpg'
 import gig4 from '../assets/images/gigs/4.jpg'
 import cumbiafestFlyer from '../assets/images/events/cumbiafest-flyer.png'
 import globalTable01 from '../assets/images/gigs/the-global-table/DSC06817.jpg'
@@ -74,14 +80,11 @@ const fallbackGallery: GalleryItem[] = [
   },
   {
     id: 1,
-    title: "Colombian Independence Day",
-    location: "Miami, FL",
-    image: gig1,
-    images: [
-      gig1,
-      gig2,
-      gig3
-    ]
+    title: "Desde Septiembre se siente que viene Diciembre - 2025",
+    location: "Sydney, Australia",
+    image: desdeSeptiembre2025Cover,
+    images: desdeSeptiembre2025Photos,
+    pagePath: DESDE_SEPTIEMBRE_2025_PAGE_PATH,
   },
   {
     id: 2,
