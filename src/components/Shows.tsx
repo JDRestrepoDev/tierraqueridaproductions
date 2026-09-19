@@ -63,6 +63,28 @@ const Shows = ({ shows, showAll = false }: ShowsProps) => {
     )
   }
 
+  if (displayShows.length === 0) {
+    return (
+      <div className="max-w-lg mx-auto text-center py-8 sm:py-12">
+        <p className="text-2xl sm:text-3xl font-outfit font-semibold text-deep-red mb-3">
+          Stay tuned
+        </p>
+        <p className="text-gray-600 font-body text-base sm:text-lg leading-relaxed mb-8">
+          No confirmed shows right now. Follow us on Instagram for the latest dates and announcements.
+        </p>
+        <a
+          href="https://www.instagram.com/tierraquerida.au/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 bg-deep-red text-white px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-red-900 hover:scale-[1.02] hover:shadow-lg"
+        >
+          Follow @tierraquerida.au
+          <span aria-hidden>→</span>
+        </a>
+      </div>
+    )
+  }
+
   return (
     <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {showsToShow.map((show, index) => (

@@ -1,8 +1,14 @@
 import type { Show, GalleryItem } from './types'
+import { CUMBIAFEST_PAGE_PATH } from './featuredEvents'
+import {
+  cumbiafestCityGalleries,
+  cumbiafestCover,
+} from './cumbiafestPhotos'
 import gig1 from '../assets/images/gigs/1.jpg'
 import gig2 from '../assets/images/gigs/2.jpg'
 import gig3 from '../assets/images/gigs/3.jpg'
 import gig4 from '../assets/images/gigs/4.jpg'
+import cumbiafestFlyer from '../assets/images/events/cumbiafest-flyer.png'
 import globalTable01 from '../assets/images/gigs/the-global-table/DSC06817.jpg'
 import globalTable02 from '../assets/images/gigs/the-global-table/DSC06819.jpg'
 import globalTable03 from '../assets/images/gigs/the-global-table/DSC06835.jpg'
@@ -43,32 +49,22 @@ const globalTableImages = [
   globalTable18,
 ]
 
-// Hard-coded gigs (events) data
-const fallbackGigs: Show[] = [
-  {
-    id: 1,
-    title: "Private Gig",
-    date: "2026-03-07", // 7 marzo
-    location: "Private event",
-    time: "",
-  },
-  {
-    id: 2,
-    title: "Oxford Street Mall, Bondi Junction",
-    date: "2026-03-21", // 21 marzo
-    location: "Bondi Junction",
-    time: "",
-  },
-  {
-    id: 3,
-    title: "Lands Down Hotel",
-    date: "2026-05-16", // 16 mayo
-    location: "Lansdowne Hotel",
-    time: "",
-  }
-]
+// Hard-coded gigs (events) data — empty until new dates are confirmed
+const fallbackGigs: Show[] = []
+
+const cumbiafestGalleryItems: GalleryItem[] = cumbiafestCityGalleries.map(
+  ({ city, slug, photos }, index) => ({
+    id: 40 + index,
+    title: `CumbiaFest 2026 · ${city}`,
+    location: `${city} · September 2026`,
+    image: photos[0] || cumbiafestCover || cumbiafestFlyer,
+    images: photos,
+    pagePath: `${CUMBIAFEST_PAGE_PATH}#${slug}`,
+  })
+)
 
 const fallbackGallery: GalleryItem[] = [
+  ...cumbiafestGalleryItems,
   {
     id: 3,
     title: "The Global Table",

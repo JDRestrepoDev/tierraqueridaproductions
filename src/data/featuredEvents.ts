@@ -71,7 +71,7 @@ const cumbiafestTicketTiers: TicketTier[] = [
 export const featuredEvents: FeaturedEvent[] = [
   {
     id: 'cumbiafest-2026-afrosound',
-    featured: true,
+    featured: false,
     pagePath: CUMBIAFEST_PAGE_PATH,
     externalTicketUrl: HUMANITIX_AFROSOUND_URL,
     bannerTitle: 'CumbiaFest – Afrosound en Sydney',

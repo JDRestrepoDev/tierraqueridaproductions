@@ -259,4 +259,82 @@
   .home-fest-btn-outline {
     @apply inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-md text-white border-2 border-white/50 px-8 py-4 rounded-full font-semibold text-base tracking-wide transition-all duration-300 hover:bg-white/25 hover:border-white;
   }
+
+  /* Event photo masonry — compact editorial grid */
+  .event-photo-gallery {
+    column-count: 2;
+    column-gap: 0.375rem;
+  }
+
+  @media (min-width: 640px) {
+    .event-photo-gallery {
+      column-count: 3;
+      column-gap: 0.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .event-photo-gallery {
+      column-count: 4;
+      column-gap: 0.625rem;
+    }
+  }
+
+  .event-photo-gallery__item {
+    break-inside: avoid;
+    margin-bottom: 0.375rem;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (min-width: 640px) {
+    .event-photo-gallery__item {
+      margin-bottom: 0.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .event-photo-gallery__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .event-photo-gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    pointer-events: none;
+  }
+
+  .event-photo-gallery__item:hover .event-photo-gallery__image,
+  .event-photo-gallery__item:focus-visible .event-photo-gallery__image {
+    transform: scale(1.03);
+  }
+
+  .event-photo-gallery__item:hover .event-photo-gallery__overlay,
+  .event-photo-gallery__item:focus-visible .event-photo-gallery__overlay {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .event-photo-gallery__item:focus-visible {
+    outline: 2px solid #E8B923;
+    outline-offset: 2px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }

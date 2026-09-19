@@ -14,6 +14,8 @@ export interface GalleryItem {
   location: string
   image: string
   images: string[]
+  /** When set, clicking the item navigates to this event page instead of opening the lightbox */
+  pagePath?: string
 }
 
 export interface Production {
