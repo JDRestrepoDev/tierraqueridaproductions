@@ -44,6 +44,8 @@ export const HUMANITIX_AFROSOUND_BRISBANE_URL =
 
 export const CUMBIAFEST_PAGE_PATH = '/cumbiafest-2026'
 
+export const DESDE_SEPTIEMBRE_2025_PAGE_PATH = '/desde-septiembre-2025'
+
 const cumbiafestTicketTiers: TicketTier[] = [
   {
     name: 'Early bird – Mar de Emociones',
